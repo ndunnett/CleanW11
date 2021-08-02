@@ -1,7 +1,7 @@
 # CleanW11
 
 ### Description
-Various tweaks and modifications to clean up Windows and improve performance without removing any default functionality (excluding Xbox and Cortana). I've tried to avoid making any aesthetic changes, it should still feel like normal Windows 11, just better. Use at your own risk, all functions are experimental.
+Various tweaks and modifications to clean up Windows and improve performance without removing any default functionality (excluding Xbox and Cortana). I've tried to avoid making any aesthetic changes aside from changing to dark mode, it should still feel like normal Windows 11, just better. Use at your own risk, all functions are experimental.
 
 ### Install instructions
 1. Download the latest official ISO using [UUP dump](https://uupdump.net/fetchupd.php?arch=amd64&ring=wif&build=latest) - current version as of writing is 10.0.22000.100
