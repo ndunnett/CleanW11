@@ -5,7 +5,6 @@ Set-MpPreference -EnableControlledFolderAccess Enabled -ErrorAction SilentlyCont
 
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]'Administrator')) {
     Write-Host "You didn't run this script with elevated priveliges. PowerShell will now relaunch as administrator and continue automatically."
-    #Start-Sleep 3
     Start-Process powershell.exe -ArgumentList ("-NoProfile -ExecutionPolicy Bypass -File `"{0}`"" -f $PSCommandPath) -Verb RunAs
     Exit
 }
@@ -363,6 +362,7 @@ function MiscPerformance {
     # Disable superfetch.
     # https://www.tenforums.com/tutorials/99821-enable-disable-superfetch-windows.html
     DisableService -Name "SysMain" -Desc "Disabling Superfetch"
+    
     # Increase svchost.exe splitting threshold to 64GB.
     # https://www.kapilarya.com/fix-high-disk-usage-by-service-host-svchost-exe-in-windows-10
     SetReg -Path "SYSTEM\CurrentControlSet\Control" -Key "SvcHostSplitThresholdInKB" -Value "67108864" -Desc "Increasing svchost.exe splitting threshold"
@@ -503,12 +503,8 @@ function MiscQoL {
     Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "IconVerticalSpacing" -Type String -Value "-1125"
     Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "JPEGImportQuality" -Type String -Value "64"
     Write-Host " done." -ForegroundColor Green
-    SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Key "LaunchTo" -Value "1" -Desc "Changing explorer to launch to This PC"
-    SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Explorer" -Key "ShowRecent" -Value "0" -Desc "Disabling recent files in quick launch"
-    SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Explorer" -Key "ShowFrequent" -Value "0" -Desc "Disabling frequent files in quick launch"
     SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Key "HideFileExt" -Value "0" -Desc "Unhiding file extensions"
     SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Key "ShowSuperHidden" -Value "1" -Desc "Unhiding OS files"
-    SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Key "UseCompactMode" -Value "1" -Desc "Enabling compact mode"
 
     # Enable dark mode.
     SetReg -Path "Software\Microsoft\Windows\CurrentVersion\Themes\Personalize" -Key "AppsUseLightTheme" -Value "0" -Desc "Enabling dark mode"
