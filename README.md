@@ -12,7 +12,7 @@ Various tweaks and modifications to clean up Windows and improve performance wit
 7. Reboot, enjoy Windows 11
 
 ### Optional: Remove Windows Defender
-Not recommended unless you really know what you're doing. Use at your own risk - this is not reversable.
+Not recommended unless you really know what you're doing. Normal methods of disabling Windows Defender used for Windows 10 have so far proven ineffective, this script simply deletes it from the OS. Use at your own risk - this is not reversable.
 1. Place `DeleteWinDefender.sh` into the root of your Windows drive (ie. C:\)
 2. Boot from an external Linux OS (ie. Ubuntu on a USB drive)
 3. Navigate to your Windows drive
